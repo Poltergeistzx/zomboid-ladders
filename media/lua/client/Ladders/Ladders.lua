@@ -207,4 +207,13 @@ end
 
 Events.OnAIStateChange.Add(Ladders.OnAiStateChange)
 
+------------------------------------------------------------------------------------------------------------------------
+-- temp compatibility
+
+do
+	local tiles = require "Ladders/SpriteTweaks"
+	Ladders.westLadderTiles = tiles.westLadderTiles
+	Ladders.northLadderTiles = tiles.northLadderTiles
+end
+
 return Ladders
