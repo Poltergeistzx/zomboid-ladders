@@ -4,6 +4,7 @@ Ladders.idW, Ladders.idN = 26476542, 26476543
 Ladders.climbSheetTopW = "TopOfLadderW"
 Ladders.climbSheetTopN = "TopOfLadderN"
 
+--
 -- Burryaga tile list
 --
 -- Some tiles for ladders are missing the proper flags to
@@ -69,11 +70,13 @@ Ladders.poleTiles = {
 -- register possible properties
 
 do
-    local values = IsoWorld.PropertyValueMap:get("Climbable") or ArrayList.new()
-    for _,val in ipairs({"LadderW","LadderN","LadderE","LadderS","Pole"}) do
-        if not values:contains(val) then values:add(val) end
+    for _,dir in ipairs({"W","N","S","E"}) do
+        local values = IsoWorld.PropertyValueMap:get("Climbable"..dir) or ArrayList.new()
+        for _,val in ipairs({"Ladder","Pole"}) do
+            if not values:contains(val) then values:add(val) end
+        end
+        IsoWorld.PropertyValueMap:put("Climbable"..dir,values)
     end
-    IsoWorld.PropertyValueMap:put("Climbable",values)
 end
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -87,14 +90,24 @@ Events.OnLoadedTileDefinitions.Add(function (spriteManager)
 	for each, name in ipairs(Ladders.westLadderTiles) do
 		properties = getSprite(name):getProperties()
 		properties:Set(IsoFlagType.climbSheetW)
-		properties:Set("Climbable","LadderW")
+		properties:Set("ClimbableW","Ladder")
 		properties:CreateKeySet()
 	end
 
 	for each, name in ipairs(Ladders.northLadderTiles) do
 		properties = getSprite(name):getProperties()
 		properties:Set(IsoFlagType.climbSheetN)
-		properties:Set("Climbable","LadderN")
+		properties:Set("ClimbableN","Ladder")
+		properties:CreateKeySet()
+	end
+
+	for each, name in ipairs(Ladders.poleTiles) do
+		properties = getSprite(name):getProperties()
+		properties:Set(IsoFlagType.climbSheetW)
+		properties:Set("ClimbableW","Pole")
+		-- properties:Set("ClimbableN","Pole")
+		-- properties:Set("ClimbableE","Pole")
+		-- properties:Set("ClimbableS","Pole")
 		properties:CreateKeySet()
 	end
 
@@ -106,19 +119,12 @@ Events.OnLoadedTileDefinitions.Add(function (spriteManager)
 		properties:CreateKeySet()
 	end
 
-	for each, name in ipairs(Ladders.poleTiles) do
-		properties = getSprite(name):getProperties()
-		properties:Set(IsoFlagType.climbSheetW)
-		getSprite(name):getProperties():Set("Climbable","Pole")
-		properties:CreateKeySet()
-	end
-
 	sprite = spriteManager:AddSprite(Ladders.climbSheetTopW,Ladders.idW)
 	sprite:setName(Ladders.climbSheetTopW)
 	properties = sprite:getProperties()
 	properties:Set(IsoFlagType.climbSheetTopW)
 	properties:Set(IsoFlagType.HoppableW)
-    properties:Set("Climbable","LadderW")
+    -- properties:Set("Climbable","LadderW")
 	properties:CreateKeySet()
 
 	sprite = spriteManager:AddSprite(Ladders.climbSheetTopN,Ladders.idN)
@@ -126,7 +132,7 @@ Events.OnLoadedTileDefinitions.Add(function (spriteManager)
 	properties = sprite:getProperties()
 	properties:Set(IsoFlagType.climbSheetTopN)
 	properties:Set(IsoFlagType.HoppableN)
-    properties:Set("Climbable","LadderN")
+    -- properties:Set("Climbable","LadderN")
 	properties:CreateKeySet()
 
 end)

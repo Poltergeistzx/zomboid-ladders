@@ -170,18 +170,14 @@ end
 function Ladders.chooseAnimVar_climbStart(character,square)
 	if not instanceof(character,"IsoPlayer") or square == nil then return end
 	local isLadderStart
-	if square:Is("Climbable") then
-		if square:getProperties():Val("Climbable") ~= "Pole" then isLadderStart = true end
-		-- if square:Is(IsoFlagType.climbSheetE) then
-		-- 	for i=0,square:getObjects():size() do if square:getObjects():get(i):
-		-- 	-- isLadderStart = square:getProperties():Val("Climbable") == "LadderE"
-		-- elseif square:Is(IsoFlagType.climbSheetW) then
-		-- 	isLadderStart = square:getProperties():Val("Climbable") == "LadderW"
-		-- elseif square:Is(IsoFlagType.climbSheetS) then
-		-- 	-- isLadderStart = square:getProperties():Val("Climbable") == "LadderS"
-		-- elseif square:Is(IsoFlagType.climbSheetN) then
-		-- 	isLadderStart = square:getProperties():Val("Climbable") == "LadderN"
-		-- end
+	if square:Is(IsoFlagType.climbSheetE) then
+		-- isLadderStart = square:getProperties():Val("Climbable") == "LadderE"
+	elseif square:Is(IsoFlagType.climbSheetW) then
+		isLadderStart = square:getProperties():Val("ClimbableW") == "Ladder"
+	elseif square:Is(IsoFlagType.climbSheetS) then
+		-- isLadderStart = square:getProperties():Val("Climbable") == "LadderS"
+	elseif square:Is(IsoFlagType.climbSheetN) then
+		isLadderStart = square:getProperties():Val("ClimbableN") == "Ladder"
 	end
 	if isLadderStart then
 		print("zxLog player change var",character,true, character:getActionStateName())
