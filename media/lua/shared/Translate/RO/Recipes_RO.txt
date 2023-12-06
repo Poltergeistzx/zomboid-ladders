@@ -1,4 +1,4 @@
 Recipes_RO = {
-    Recipe_Make_Steel_Ladder = "Make Steel Ladder",
-    Recipe_Make_Wooden_Ladder = "Make Wooden Ladder",
+    Recipe_Make_Steel_Ladder = "Faceți o scară de oțel",
+    Recipe_Make_Wooden_Ladder = "Faceți o scară din lemn",
 }

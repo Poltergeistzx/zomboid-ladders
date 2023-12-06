@@ -1,4 +1,4 @@
 Recipes_CH = {
-    Recipe_Make_Steel_Ladder = "Make Steel Ladder",
-    Recipe_Make_Wooden_Ladder = "Make Wooden Ladder",
+    Recipe_Make_Steel_Ladder = "製作鋼梯",
+    Recipe_Make_Wooden_Ladder = "製作木梯",
 }

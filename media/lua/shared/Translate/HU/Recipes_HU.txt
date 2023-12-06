@@ -1,4 +1,4 @@
 Recipes_HU = {
-    Recipe_Make_Steel_Ladder = "Make Steel Ladder",
-    Recipe_Make_Wooden_Ladder = "Make Wooden Ladder",
+    Recipe_Make_Steel_Ladder = "Készítsen acéllétrát",
+    Recipe_Make_Wooden_Ladder = "Készítsen fából készült létrát",
 }

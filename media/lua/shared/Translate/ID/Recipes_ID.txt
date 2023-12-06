@@ -1,4 +1,4 @@
 Recipes_ID = {
-    Recipe_Make_Steel_Ladder = "Make Steel Ladder",
-    Recipe_Make_Wooden_Ladder = "Make Wooden Ladder",
+    Recipe_Make_Steel_Ladder = "Membuat Tangga Baja",
+    Recipe_Make_Wooden_Ladder = "Membuat Tangga Kayu",
 }
